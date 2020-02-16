@@ -123,6 +123,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="lib_8.cpp" />
+    <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="Point.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ContOut.h" />
+    <ClInclude Include="H.h" />
+    <ClInclude Include="MyString.h" />
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

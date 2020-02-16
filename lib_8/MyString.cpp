@@ -126,7 +126,7 @@ MyString& MyString::GetString()
 	 strcat(m_pStr,s.m_pStr);
 	 return *this;
  }*/
-bool MyString::operator==(const MyString& other)
+bool MyString::operator==(const MyString& other) const
 {
 	return(strcmp(this->m_pStr,other.m_pStr)==0);
 }
@@ -134,7 +134,7 @@ bool MyString::operator==(const MyString& other)
 {
 	return(strcmp(this->m_pStr,other)==0);
 
-}*/
+}*/ 
 //------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 // конструктор копирования (move semantics)

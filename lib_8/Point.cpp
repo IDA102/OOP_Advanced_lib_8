@@ -19,6 +19,19 @@ Point& Point::operator+=(int XY)
 		y = y + XY;
 	return *this;
 }
+bool Point::operator<(const Point  &b) const
+{
+	if (x < b.x && y < b.y) return true;
+	else return false;
+}
+bool Point::operator==(const Point & b) const
+{
+	if ((this->x == b.x) && (this->y == b.y))
+	{
+		return true;
+	}
+	return false;
+}
 /*Point& Point::operator+(const int XY)
 {
 	return Point(x + XY, y + XY);

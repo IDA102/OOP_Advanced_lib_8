@@ -13,6 +13,9 @@
 #include <string>
 #include <stdexcept>
 #include <vector>
+#include <list>
+#include <deque>
 using namespace std;
 #include "MyString.h"
 #include "Point.h"
+#include "ContOut.h"

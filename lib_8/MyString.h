@@ -52,8 +52,8 @@ public:
 	MyString(const MyString &other );//Конструктор копирования
 	void SetNewString (const char* pStr);
 	MyString& operator=(const MyString& s);
-	bool operator==(const MyString& other);
-	friend ostream& operator<<(ostream& os, const MyString &s);
+	bool operator==(const MyString& other) const;
+	friend ostream& operator<< (ostream& os, const MyString &s);
 	//перегрузка имен функций
 	//friend void Swap(MyString& a, MyString& b);
 
