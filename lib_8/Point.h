@@ -10,6 +10,7 @@ public:
 	Point& operator+=(int XY);
 	bool operator <(const Point &b) const;
 	bool operator ==(const Point &b) const;
+	bool operator !=(const Point &b) const;
 	//Point& operator+(const int XY); Посмотреть что не так!!!!
 	Point operator+(const Point &ref_in);
 	friend ostream& operator<<(ostream& os, const Point &ms);

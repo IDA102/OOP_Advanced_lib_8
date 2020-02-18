@@ -47,15 +47,24 @@ ostream& operator<<(ostream& os, const Point *ms)
 	else cout << "NULL";
 		return os;
 }
-void delString(char *string)//void delString(char *string,const size_t I)//Вариант с 2 параметрами
+void delString(vector<char> &string)//void delString(char *string,const size_t I)//Вариант с 2 параметрами
 {
-	size_t I = strlen(string);
-	for (size_t i = 0; i < I; i++)
+	vector<char>::iterator it = string.begin();
+	vector<char>::iterator itLast = string.end();
+	size_t cnt = 0;
+	while (it != (string.end()-1))
 	{
-		if (string[i] == string[i + 1])
+		if (*it == *(it + 1))
 		{
-			string[i] = 0x07; //20
+			cnt++;
+			while (*it == *(it + cnt + 1))
+			{
+				++cnt;
+			}
+			it = string.erase(it, it + (cnt + 1));
+			cnt = 0;
 		}
+		else ++it;
 	}
 };
 bool del_two(Point &b)
@@ -321,18 +330,14 @@ int main()
 	}
 	stop
 		///////////////////////////////////////////////////////////////////
-		/*
-		Напишите функцию, которая должна удалять только повторяющиеся последовательности.
-		Например: было - "qwerrrrty12222r3", стало - "qwety1r3"
-		*/
-	//char *str = "qwe"; // Попросить прокоментировать, понадобилось const, (при такой инициализоции размещение в статитческой памяти)
-	char string[] = "qwerrrrty12222r3";
-	delString(string);//delString(string,strlen(string));//Второй вариант с 2 двумя параметрами
-	/* 
-	Сказать что перераспределение динамической памяти(создать указатель, откоректировать строку посредством циклов, удалить старое)
-	для string'a не самый лучший выбор  и  приемущество над моим вариантом сомнительно. И да, я знаю о внегласном правиле, что если string то значит динамическая память.
+	/*
+	Напишите функцию, которая должна удалять только повторяющиеся последовательности.
+	Например: было - "qwerrrrty12222r3", стало - "qwety1r3"
 	*/
-	cout << string << endl;
+	//char *str = "qwe"; // Попросить прокоментировать, понадобилось const, (при такой инициализоции размещение в статитческой памяти)
+	vector<char> vChar = { 'q','w','e','r','r','r','r','t','y','1','2','2','2','2','r','3' };
+	delString(vChar);
+	cout << vChar << endl;
 	cout << "----------------------------------------------------------------------------------------------------" << endl;
 	stop
 ///////////////////////////////////////////////////////////////////
@@ -340,19 +345,26 @@ int main()
 Удаление элемента последовательности erase()
 Напишите функцию удаления из любого вектора всех дублей
 */
-	vector<char> vChar3 = { 'q','w','e','r','r','r','r','t','y','1','2','2','2','2','r','3' };
+	vector<char> vChar3 = { 'q','q','w','e','r','r','r','r','t','y','1','2','2','2','2','r','3' };
 	cout << vChar3 << endl;
-	delString(&vChar3[0]);//delString(&vChar3[0],vChar3.size());//Второй вариант с 2 двумя параметрами для экономии мощности
-	vector<char>::iterator it = vChar3.begin();
+	vector<char>::iterator it1 = vChar3.begin();
+	vector<char>::iterator it2 = vChar3.begin()+1;
 	stop
-	size_t i = 0;
-	while (it != vChar3.end())
+	while (it1 != vChar3.end())
 	{
-		if (*it == '\a')	
+		while (it2 != vChar3.end())
 		{
-			it = vChar3.erase(it);
-		}
-		else { ++it; };
+			if (*it1 == *it2)
+			{
+				it2 = vChar3.erase(it2);
+
+			}
+			else ++it2;
+		}	
+		++it1;
+		it2 = it1;
+		if (it1 != vChar3.end()) { ++it2; }//Тут пожно покрасивше
+		stop
 	}
 	cout << vChar3 << endl;
 	cout << "----------------------------------------------------------------------------------------------------" << endl;

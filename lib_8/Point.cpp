@@ -32,6 +32,14 @@ bool Point::operator==(const Point & b) const
 	}
 	return false;
 }
+bool Point::operator!=(const Point & b) const
+{
+	if ((this->x == b.x) && (this->y == b.y))
+	{
+		return false;
+	}
+	return true;
+}//Можно делегировать ==
 /*Point& Point::operator+(const int XY)
 {
 	return Point(x + XY, y + XY);
